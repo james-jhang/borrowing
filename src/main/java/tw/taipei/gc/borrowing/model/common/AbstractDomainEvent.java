@@ -1,6 +1,5 @@
-package tw.taipei.gc.borrowing.model.domain;
+package tw.taipei.gc.borrowing.model.common;
 
-import tw.taipei.gc.borrowing.model.common.DateProvider;
 import java.util.Date;
 import java.util.UUID;
 

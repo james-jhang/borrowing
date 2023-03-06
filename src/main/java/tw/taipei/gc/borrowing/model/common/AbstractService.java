@@ -1,4 +1,4 @@
-package tw.taipei.gc.borrowing.model.domain;
+package tw.taipei.gc.borrowing.model.common;
 
 import java.util.Collections;
 import java.util.List;
