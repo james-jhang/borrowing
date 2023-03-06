@@ -2,15 +2,13 @@ package tw.taipei.gc.borrowing.usecase.item.create;
 
 import tw.taipei.gc.borrowing.usecase.UseCaseOutput;
 
-public class CreateItemUseCaseOutput implements UseCaseOutput {
+public interface CreateItemUseCaseOutput extends UseCaseOutput {
 
-    private String itemID;
+    public void setID(String ID);
 
-    public void setItemID(String itemID) {
-        this.itemID = itemID;
-    }
+    public String getID();
 
-    public String getItemID() {
-        return this.itemID;
-    }
+    public void setName(String name);
+
+    public String getName();
 }

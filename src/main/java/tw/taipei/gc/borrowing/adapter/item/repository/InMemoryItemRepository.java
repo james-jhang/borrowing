@@ -1,4 +1,4 @@
-package tw.taipei.gc.borrowing.adapter.item;
+package tw.taipei.gc.borrowing.adapter.item.repository;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -18,7 +18,8 @@ public class CreateItemUseCase extends UseCase<CreateItemUseCaseInput, CreateIte
     public void execute(CreateItemUseCaseInput input, CreateItemUseCaseOutput output) {
         Item item = new Item(input.getName());
         this.itemRepository.save(item);
-        output.setItemID(item.getID().toString());
+        output.setID(item.getID().toString());
+        output.setName(item.getName());
     }
 
 }
