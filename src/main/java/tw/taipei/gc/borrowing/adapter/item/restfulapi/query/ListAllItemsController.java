@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.taipei.gc.borrowing.adapter.item.presenter.query.ListAllItemsPresenter;
+import tw.taipei.gc.borrowing.adapter.item.presenter.query.ItemViewModel;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCaseInput;
 
@@ -20,7 +21,7 @@ public class ListAllItemsController {
     private ListAllItemsUseCase findAllItemsUseCase;
 
     @GetMapping("/list")
-    public ResponseEntity<List<ListAllItemsPresenter.FindAllItemsViewModel>> listItems() {
+    public ResponseEntity<List<ItemViewModel>> listItems() {
         ListAllItemsUseCaseInput findAllItemsUseCaseInput = new ListAllItemsUseCaseInput();
         ListAllItemsPresenter findAllItemsPresenter = new ListAllItemsPresenter();
 
@@ -28,6 +29,7 @@ public class ListAllItemsController {
             this.findAllItemsUseCase.execute(findAllItemsUseCaseInput, findAllItemsPresenter);
             return ResponseEntity.ok().body(findAllItemsPresenter.viewModel());
         } catch (Exception e) {
+            // TODO how to handle this exception?
             return ResponseEntity.badRequest().body(null);
         }
 

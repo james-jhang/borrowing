@@ -31,6 +31,7 @@ public class CreateItemController {
             CreateItemViewModel viewModel = createItemPresenter.viewModel();
             return ResponseEntity.ok().body(viewModel);
         } catch (IllegalArgumentException e) {
+            // TODO how to handle this exception?
             return ResponseEntity.badRequest().body(null);
         }
     }

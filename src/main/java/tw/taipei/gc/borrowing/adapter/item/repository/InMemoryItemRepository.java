@@ -24,7 +24,7 @@ public class InMemoryItemRepository implements ItemRepository {
     public Optional<Item> findById(String id) {
         Item target = null;
         for (Item item : entities) {
-            if (item.getID().toString() == id) {
+            if (item.getID().toString().equals(id)) {
                 target = item;
                 break;
             }

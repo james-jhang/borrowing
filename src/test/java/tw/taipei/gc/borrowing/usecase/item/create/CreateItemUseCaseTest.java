@@ -5,9 +5,6 @@ import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
 import tw.taipei.gc.borrowing.model.item.Item;
 import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
-import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCase;
-import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCaseInput;
-import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCaseOutput;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

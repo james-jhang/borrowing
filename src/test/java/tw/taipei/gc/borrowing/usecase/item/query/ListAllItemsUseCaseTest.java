@@ -36,7 +36,7 @@ public class ListAllItemsUseCaseTest {
 
         queryItemUseCase.execute(queryItemUseCaseInput, queryItemUseCaseOutput);
 
-        List<ListAllItemsUseCaseOutput.ItemViewObject> itemIDs = queryItemUseCaseOutput.results();
+        List<ItemViewObject> itemIDs = queryItemUseCaseOutput.results();
         assertEquals(2, itemIDs.size());
     }
 }

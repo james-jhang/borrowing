@@ -8,6 +8,7 @@ import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
 import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCase;
+import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCase;
 
 @Configuration
 public class BeanConfig {
@@ -30,5 +31,10 @@ public class BeanConfig {
     @Bean
     public ListAllItemsUseCase BeanFindAllItemsUseCase() {
         return new ListAllItemsUseCase(BeanItemRepository(), BeanDomainEventBus());
+    }
+
+    @Bean
+    public QueryItemByIDUseCase BeanQueryItemByIDUseCase() {
+        return new QueryItemByIDUseCase(BeanItemRepository(), BeanDomainEventBus());
     }
 }

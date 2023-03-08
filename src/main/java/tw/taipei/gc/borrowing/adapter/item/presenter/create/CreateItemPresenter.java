@@ -7,6 +7,7 @@ public class CreateItemPresenter implements CreateItemUseCaseOutput {
     private String ID;
     private String name;
 
+    // TODO make a parent class for all presenters?
     public CreateItemViewModel viewModel() {
         CreateItemViewModel viewModel = new CreateItemViewModel();
         viewModel.setID(this.ID);
