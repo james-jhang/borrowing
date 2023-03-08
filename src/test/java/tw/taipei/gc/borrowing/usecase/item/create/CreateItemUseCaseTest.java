@@ -1,9 +1,10 @@
-package tw.taipei.gc.borrowing.usecase.item;
+package tw.taipei.gc.borrowing.usecase.item.create;
 
-import tw.taipei.gc.borrowing.adapter.item.presenter.CreateItemPresenter;
+import tw.taipei.gc.borrowing.adapter.item.presenter.create.CreateItemPresenter;
 import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
 import tw.taipei.gc.borrowing.model.item.Item;
+import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCase;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCaseInput;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCaseOutput;

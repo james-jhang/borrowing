@@ -1,7 +1,7 @@
-package tw.taipei.gc.borrowing.adapter.item.restfulapi;
+package tw.taipei.gc.borrowing.adapter.item.presenter.create;
 
 
-public class ItemViewModel {
+public class CreateItemViewModel {
     private String ID;
     private String name;
 

@@ -1,6 +1,5 @@
-package tw.taipei.gc.borrowing.adapter.item.presenter;
+package tw.taipei.gc.borrowing.adapter.item.presenter.create;
 
-import tw.taipei.gc.borrowing.adapter.item.restfulapi.ItemViewModel;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCaseOutput;
 
 public class CreateItemPresenter implements CreateItemUseCaseOutput {
@@ -8,8 +7,8 @@ public class CreateItemPresenter implements CreateItemUseCaseOutput {
     private String ID;
     private String name;
 
-    public ItemViewModel viewModel() {
-        ItemViewModel viewModel = new ItemViewModel();
+    public CreateItemViewModel viewModel() {
+        CreateItemViewModel viewModel = new CreateItemViewModel();
         viewModel.setID(this.ID);
         viewModel.setName(this.name);
         return viewModel;

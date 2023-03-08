@@ -7,14 +7,17 @@ import tw.taipei.gc.borrowing.model.common.DomainEventBus;
 import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
 import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCase;
+import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCase;
 
 @Configuration
 public class BeanConfig {
 
+    @Bean
     public DomainEventBus BeanDomainEventBus() {
         return new DomainEventBus();
     }
 
+    @Bean
     public ItemRepository BeanItemRepository() {
         return new InMemoryItemRepository();
     }
@@ -22,5 +25,10 @@ public class BeanConfig {
     @Bean
     public CreateItemUseCase BeanCreateItemUseCase() {
         return new CreateItemUseCase(BeanItemRepository(), BeanDomainEventBus());
+    }
+
+    @Bean
+    public ListAllItemsUseCase BeanFindAllItemsUseCase() {
+        return new ListAllItemsUseCase(BeanItemRepository(), BeanDomainEventBus());
     }
 }
