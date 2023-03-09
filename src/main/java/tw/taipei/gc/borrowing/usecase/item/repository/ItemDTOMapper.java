@@ -6,9 +6,9 @@ import java.util.UUID;
 
 public class ItemDTOMapper {
     public static ItemDTO toDTO(Item item) {
-        ItemDTO itemDTO = new ItemDTO();
-        itemDTO.setID(item.getID().toString());
-        itemDTO.setName(item.getName());
+        ItemDTO itemDTO = new ItemDTO(
+                item.getID().toString(),
+                item.getName());
         return itemDTO;
     }
 
