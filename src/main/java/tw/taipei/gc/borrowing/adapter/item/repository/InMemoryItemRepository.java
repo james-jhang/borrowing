@@ -4,27 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import tw.taipei.gc.borrowing.model.item.Item;
-import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemDTO;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 
 public class InMemoryItemRepository implements ItemRepository {
 
-    private final List<Item> entities;
+    private final List<ItemDTO> entities;
 
     public InMemoryItemRepository() {
-        entities = new ArrayList<Item>();
+        entities = new ArrayList<ItemDTO>();
     }
 
     @Override
-    public List<Item> findAll() {
+    public List<ItemDTO> findAll() {
         return entities;
     }
 
     @Override
-    public Optional<Item> findById(String id) {
-        Item target = null;
-        for (Item item : entities) {
-            if (item.getID().toString().equals(id)) {
+    public Optional<ItemDTO> findById(String id) {
+        ItemDTO target = null;
+        for (ItemDTO item : entities) {
+            if (item.getID().equals(id)) {
                 target = item;
                 break;
             }
@@ -33,9 +33,9 @@ public class InMemoryItemRepository implements ItemRepository {
     }
 
     @Override
-    public Optional<Item> findFirstByName(String name) {
-        Item target = null;
-        for (Item item : entities) {
+    public Optional<ItemDTO> findFirstByName(String name) {
+        ItemDTO target = null;
+        for (ItemDTO item : entities) {
             if (item.getName() == name) {
                 target = item;
                 break;
@@ -45,13 +45,13 @@ public class InMemoryItemRepository implements ItemRepository {
     }
 
     @Override
-    public Optional<Item> save(Item item) {
+    public Optional<ItemDTO> save(ItemDTO item) {
         entities.add(item);
         return Optional.ofNullable(item);
     }
 
     @Override
-    public boolean remove(Item item) {
+    public boolean remove(ItemDTO item) {
         return entities.remove(item);
     }
 

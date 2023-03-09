@@ -5,10 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import tw.taipei.gc.borrowing.model.item.Item;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
-import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCaseInput;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCaseOutput;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemDTOMapper;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 import tw.taipei.gc.borrowing.adapter.item.presenter.query.ListAllItemsPresenter;
 import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 
@@ -24,8 +25,8 @@ public class ListAllItemsUseCaseTest {
     public void given() {
         itemRepository = new InMemoryItemRepository();
         eventBus = new DomainEventBus();
-        itemRepository.save(new Item("木桌"));
-        itemRepository.save(new Item("辦公椅"));
+        itemRepository.save(ItemDTOMapper.toDTO(new Item("木桌")));
+        itemRepository.save(ItemDTOMapper.toDTO(new Item("辦公椅")));
     }
 
     @Test

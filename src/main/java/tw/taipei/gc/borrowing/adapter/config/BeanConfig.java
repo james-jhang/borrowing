@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
-import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
 import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCase;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCase;
 
 @Configuration

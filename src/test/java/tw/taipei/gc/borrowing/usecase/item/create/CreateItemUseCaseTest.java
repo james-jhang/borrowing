@@ -4,7 +4,8 @@ import tw.taipei.gc.borrowing.adapter.item.presenter.create.CreateItemPresenter;
 import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
 import tw.taipei.gc.borrowing.model.item.Item;
-import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemDTO;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -35,9 +36,9 @@ public class CreateItemUseCaseTest {
 
         createItemUseCase.execute(createItemUseCaseInput, createItemUseCaseOutput);
 
-        List<Item> items = itemRepository.findAll();
+        List<ItemDTO> items = itemRepository.findAll();
         assertEquals(1, items.size());
-        Item bottle = items.get(0);
+        ItemDTO bottle = items.get(0);
         assertEquals("酒精噴瓶", bottle.getName());
 
         String ID = createItemUseCaseOutput.getID();

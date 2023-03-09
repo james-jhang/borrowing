@@ -6,7 +6,9 @@ import java.util.Optional;
 
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
 import tw.taipei.gc.borrowing.usecase.UseCase;
-import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemDTO;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemDTOMapper;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 
 public class QueryItemByIDUseCase extends UseCase<QueryItemByIDUseCaseInput, QueryItemByIDUseCaseOutput> {
 
@@ -19,9 +21,9 @@ public class QueryItemByIDUseCase extends UseCase<QueryItemByIDUseCaseInput, Que
 
     @Override
     public void execute(QueryItemByIDUseCaseInput input, QueryItemByIDUseCaseOutput output) {
-        Optional<Item> result = this.itemRepository.findById(input.getID());
+        Optional<ItemDTO> result = this.itemRepository.findById(input.getID());
         if (result.isPresent()) {
-            Item item = result.get();
+            Item item = ItemDTOMapper.toModel(result.get());
             output.setID(item.getID().toString());
             output.setName(item.getName());
         }

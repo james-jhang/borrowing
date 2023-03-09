@@ -5,16 +5,15 @@ import org.junit.jupiter.api.Test;
 
 import tw.taipei.gc.borrowing.model.item.Item;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
-import tw.taipei.gc.borrowing.usecase.item.ItemRepository;
 import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCaseInput;
 import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCaseOutput;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemDTOMapper;
+import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 import tw.taipei.gc.borrowing.adapter.item.presenter.query.QueryItemByIDPresenter;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 public class ItemQueryByIDUseCaseTest {
     private ItemRepository itemRepository;
@@ -28,8 +27,8 @@ public class ItemQueryByIDUseCaseTest {
         eventBus = new DomainEventBus();
         this.table = new Item("木桌");
         this.chair = new Item("辦公椅");
-        itemRepository.save(this.table);
-        itemRepository.save(this.chair);
+        itemRepository.save(ItemDTOMapper.toDTO(this.table));
+        itemRepository.save(ItemDTOMapper.toDTO(this.chair));
     }
 
     @Test

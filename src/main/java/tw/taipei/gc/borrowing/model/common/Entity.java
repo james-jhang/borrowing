@@ -4,14 +4,17 @@ import java.util.UUID;
 
 public abstract class Entity {
 
-    protected UUID id;
+    protected UUID ID;
 
     public Entity() {
-        this.id = UUID.randomUUID();
+        this.ID = UUID.randomUUID();
     }
 
     public UUID getID() {
-        return this.id;
+        return this.ID;
     }
 
+    public void setID(UUID ID) {
+        this.ID = ID;
+    }
 }
