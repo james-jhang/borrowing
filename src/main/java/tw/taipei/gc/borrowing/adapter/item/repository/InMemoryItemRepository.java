@@ -47,6 +47,7 @@ public class InMemoryItemRepository implements ItemRepository {
     @Override
     public Optional<ItemDTO> save(ItemDTO item) {
         entities.add(item);
+        // TODO the passed-in item cannot be null
         return Optional.ofNullable(item);
     }
 
