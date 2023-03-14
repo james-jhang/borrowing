@@ -4,6 +4,7 @@ import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.adapter.user.repository.InMemoryUserRepository;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCase;
+import tw.taipei.gc.borrowing.usecase.item.delete.DeleteItemUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCase;
 import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
@@ -43,5 +44,9 @@ public class UseCaseFactory {
 
     public QueryItemByIDUseCase QueryItemByIDUseCase() {
         return new QueryItemByIDUseCase(itemRepository, eventBus);
+    }
+
+    public DeleteItemUseCase DeleteItemUseCase() {
+        return new DeleteItemUseCase(itemRepository, eventBus);
     }
 }

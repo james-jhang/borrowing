@@ -1,11 +1,11 @@
 package tw.taipei.gc.borrowing.adapter.item.restfulapi.query;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import tw.taipei.gc.borrowing.adapter.UseCaseFactory;
 import tw.taipei.gc.borrowing.adapter.item.presenter.query.ListAllItemsPresenter;
 import tw.taipei.gc.borrowing.adapter.item.presenter.query.ItemViewModel;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCase;
@@ -17,8 +17,11 @@ import java.util.List;
 @RequestMapping("/api/items")
 public class ListAllItemsController {
 
-    @Autowired
-    private ListAllItemsUseCase findAllItemsUseCase;
+    private final ListAllItemsUseCase findAllItemsUseCase;
+
+    public ListAllItemsController() {
+        findAllItemsUseCase = UseCaseFactory.getInstance().ListAllItemsUseCase();
+    }
 
     @GetMapping("/list")
     public ResponseEntity<List<ItemViewModel>> listItems() {

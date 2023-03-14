@@ -3,7 +3,6 @@ package tw.taipei.gc.borrowing.usecase.item.create;
 import tw.taipei.gc.borrowing.adapter.item.presenter.create.CreateItemPresenter;
 import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
-import tw.taipei.gc.borrowing.model.item.Item;
 import tw.taipei.gc.borrowing.usecase.item.repository.ItemDTO;
 import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 
@@ -27,7 +26,7 @@ public class CreateItemUseCaseTest {
     }
 
     @Test
-    public void the_created_item_id_should_follow_the_standard_classification() {
+    public void creating_an_item_should_generate_an_id_for_the_created_item() {
         CreateItemUseCase createItemUseCase = new CreateItemUseCase(this.itemRepository, this.eventBus);
         CreateItemUseCaseInput createItemUseCaseInput = new CreateItemUseCaseInput();
         CreateItemUseCaseOutput createItemUseCaseOutput = new CreateItemPresenter();
