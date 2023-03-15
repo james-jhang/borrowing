@@ -1,4 +1,4 @@
-package tw.taipei.gc.borrowing.adapter.user.restfulapi.register;
+package tw.taipei.gc.borrowing.adapter.user.restfulapi.member.register;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tw.taipei.gc.borrowing.adapter.UseCaseFactory;
-import tw.taipei.gc.borrowing.adapter.user.presenter.register.MemberViewModel;
-import tw.taipei.gc.borrowing.adapter.user.presenter.register.RegisterMemberPresenter;
+import tw.taipei.gc.borrowing.adapter.user.presenter.member.register.MemberViewModel;
+import tw.taipei.gc.borrowing.adapter.user.presenter.member.register.RegisterMemberPresenter;
 import tw.taipei.gc.borrowing.usecase.user.member.register.RegisterMemberUseCase;
 import tw.taipei.gc.borrowing.usecase.user.member.register.RegisterMemberUseCaseInput;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/members")
 public class RegisterMemberController {
 
     private final RegisterMemberUseCase registerMemberUseCase;

@@ -1,4 +1,4 @@
-package tw.taipei.gc.borrowing.adapter.user.presenter.register;
+package tw.taipei.gc.borrowing.adapter.user.presenter.member.register;
 
 import tw.taipei.gc.borrowing.usecase.user.member.register.RegisterMemberUseCaseOutput;
 

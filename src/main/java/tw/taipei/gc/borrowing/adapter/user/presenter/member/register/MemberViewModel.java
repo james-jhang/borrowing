@@ -1,4 +1,4 @@
-package tw.taipei.gc.borrowing.adapter.user.presenter.register;
+package tw.taipei.gc.borrowing.adapter.user.presenter.member.register;
 
 public class MemberViewModel {
     private final String ID;

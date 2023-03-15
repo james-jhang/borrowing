@@ -1,6 +1,6 @@
 package tw.taipei.gc.borrowing.usecase.user.member.register;
 
-import tw.taipei.gc.borrowing.adapter.user.presenter.register.RegisterMemberPresenter;
+import tw.taipei.gc.borrowing.adapter.user.presenter.member.register.RegisterMemberPresenter;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserRepository;
 import tw.taipei.gc.borrowing.adapter.user.repository.InMemoryUserRepository;
