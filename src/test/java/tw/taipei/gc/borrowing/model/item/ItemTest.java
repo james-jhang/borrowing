@@ -11,7 +11,7 @@ public class ItemTest {
     public void create_an_item() {
         Item item = new Item("酒精噴瓶");
         assertNotNull(item.getID());
-        assertNotEquals("", item.getID());
+        assertNotEquals("", item.getID().toString());
         assertEquals("酒精噴瓶", item.getName());
     }
 }

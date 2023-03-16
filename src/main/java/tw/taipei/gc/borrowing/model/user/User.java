@@ -3,6 +3,7 @@ package tw.taipei.gc.borrowing.model.user;
 import tw.taipei.gc.borrowing.model.common.Entity;
 import tw.taipei.gc.borrowing.model.item.Item;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
@@ -32,8 +33,13 @@ public class User extends Entity {
         this.name = name;
     }
 
-    public Reservation reserve(Item item) {
-        Reservation reserve = new Reservation(this.getID(), item.getID());
+    public Reservation reserve(Item item, Date startDate, Date endDate) {
+        Reservation reserve = new Reservation(
+                this.getID(),
+                item.getID(),
+                startDate,
+                endDate
+        );
         this.reservations.add(reserve);
         return reserve;
     }

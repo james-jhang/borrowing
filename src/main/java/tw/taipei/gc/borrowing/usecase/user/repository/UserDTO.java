@@ -1,6 +1,7 @@
 package tw.taipei.gc.borrowing.usecase.user.repository;
 
 import tw.taipei.gc.borrowing.usecase.DTO;
+import tw.taipei.gc.borrowing.usecase.user.repository.reservation.ReservationDTO;
 
 import java.util.List;
 

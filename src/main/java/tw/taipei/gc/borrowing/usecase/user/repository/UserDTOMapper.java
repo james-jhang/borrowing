@@ -2,6 +2,7 @@ package tw.taipei.gc.borrowing.usecase.user.repository;
 
 import tw.taipei.gc.borrowing.model.user.Reservation;
 import tw.taipei.gc.borrowing.model.user.User;
+import tw.taipei.gc.borrowing.usecase.user.repository.reservation.ReservationDTO;
 import tw.taipei.gc.borrowing.usecase.user.repository.reservation.ReservationDTOMapper;
 
 import java.util.ArrayList;

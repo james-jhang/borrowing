@@ -8,9 +8,9 @@ import tw.taipei.gc.borrowing.usecase.item.delete.DeleteItemUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCase;
 import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
-import tw.taipei.gc.borrowing.usecase.user.custodian.register.RegisterCustodianUseCase;
-import tw.taipei.gc.borrowing.usecase.user.member.register.RegisterMemberUseCase;
-import tw.taipei.gc.borrowing.usecase.user.member.reserve.ReserveItemUseCase;
+import tw.taipei.gc.borrowing.usecase.custodian.register.RegisterCustodianUseCase;
+import tw.taipei.gc.borrowing.usecase.user.register.RegisterUserUseCase;
+import tw.taipei.gc.borrowing.usecase.user.reserve.ReserveItemUseCase;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserRepository;
 
 public class UseCaseFactory {
@@ -32,8 +32,8 @@ public class UseCaseFactory {
         return _instance;
     }
 
-    public RegisterMemberUseCase RegisterMemberUseCase() {
-        return new RegisterMemberUseCase(userRepository, eventBus);
+    public RegisterUserUseCase RegisterMemberUseCase() {
+        return new RegisterUserUseCase(userRepository, eventBus);
     }
 
     public RegisterCustodianUseCase RegisterCustodianUseCase() {
