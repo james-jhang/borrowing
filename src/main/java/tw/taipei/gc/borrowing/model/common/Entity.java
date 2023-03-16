@@ -10,6 +10,10 @@ public abstract class Entity {
         this.ID = UUID.randomUUID();
     }
 
+    public Entity(UUID ID) {
+        this.ID = ID;
+    }
+
     public UUID getID() {
         return this.ID;
     }

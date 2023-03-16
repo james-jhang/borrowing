@@ -1,24 +1,30 @@
 package tw.taipei.gc.borrowing.model.user;
 
 import tw.taipei.gc.borrowing.model.common.Entity;
-import tw.taipei.gc.borrowing.model.item.Item;
+
+import java.util.UUID;
 
 public class Reservation extends Entity {
-    private User user;
-    private Item item;
+    private final UUID userID;
+    private final UUID itemID;
 
-    public Reservation(User user, Item item) {
+    public Reservation(UUID userID, UUID itemID) {
         super();
-        this.user = user;
-        this.item = item;
+        this.userID = userID;
+        this.itemID = itemID;
     }
 
-    public User getUser() {
-        return user;
-
+    public Reservation(UUID ID, UUID userID, UUID itemID) {
+        super(ID);
+        this.userID = userID;
+        this.itemID = itemID;
     }
 
-    public Item getItem() {
-        return item;
+    public UUID getUserID() {
+        return userID;
+    }
+
+    public UUID getItemID() {
+        return itemID;
     }
 }

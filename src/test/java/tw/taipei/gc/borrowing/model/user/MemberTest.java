@@ -1,6 +1,6 @@
 package tw.taipei.gc.borrowing.model.user;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +12,7 @@ public class MemberTest {
         Member member = new Member("James");
         Item item = new Item("簡報筆");
         Reservation reservation = member.reserve(item);
-        assertTrue(member.getID().equals(reservation.getUser().getID()));
-        assertTrue(item.getID().equals(reservation.getItem().getID()));
+        assertEquals(member.getID(), reservation.getUserID());
+        assertEquals(item.getID(), reservation.getItemID());
     }
 }

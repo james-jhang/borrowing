@@ -14,6 +14,7 @@ import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCaseInput;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
+// TODO use plural or singular? (/api/items or /api/item)
 @RestController
 @RequestMapping("/api/items")
 public class CreateItemController {

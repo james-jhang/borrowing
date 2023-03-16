@@ -10,6 +10,7 @@ import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCase;
 import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 import tw.taipei.gc.borrowing.usecase.user.custodian.register.RegisterCustodianUseCase;
 import tw.taipei.gc.borrowing.usecase.user.member.register.RegisterMemberUseCase;
+import tw.taipei.gc.borrowing.usecase.user.member.reserve.ReserveItemUseCase;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserRepository;
 
 public class UseCaseFactory {
@@ -53,5 +54,9 @@ public class UseCaseFactory {
 
     public DeleteItemUseCase DeleteItemUseCase() {
         return new DeleteItemUseCase(itemRepository, eventBus);
+    }
+
+    public ReserveItemUseCase ReserveItemUseCase() {
+        return new ReserveItemUseCase(userRepository, itemRepository, eventBus);
     }
 }
