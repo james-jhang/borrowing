@@ -1,9 +1,10 @@
 package tw.taipei.gc.borrowing.adapter.item.presenter.query;
 
+import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.item.query.ItemViewObject;
 import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCaseOutput;
 
-public class QueryItemByIDPresenter implements QueryItemByIDUseCaseOutput {
+public class QueryItemByIDPresenter implements QueryItemByIDUseCaseOutput, Presenter<ItemViewModel> {
     private String ID;
     private String name;
 

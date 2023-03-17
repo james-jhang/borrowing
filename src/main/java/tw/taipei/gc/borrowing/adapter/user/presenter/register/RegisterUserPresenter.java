@@ -1,8 +1,9 @@
 package tw.taipei.gc.borrowing.adapter.user.presenter.register;
 
+import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.user.register.RegisterUserUseCaseOutput;
 
-public class RegisterUserPresenter implements RegisterUserUseCaseOutput {
+public class RegisterUserPresenter implements RegisterUserUseCaseOutput, Presenter<UserViewModel> {
     private String ID;
     private String name;
 
@@ -26,6 +27,7 @@ public class RegisterUserPresenter implements RegisterUserUseCaseOutput {
         return this.name;
     }
 
+    @Override
     public UserViewModel viewModel() {
         return new UserViewModel(ID, name);
     }

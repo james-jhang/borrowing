@@ -1,8 +1,9 @@
 package tw.taipei.gc.borrowing.adapter.custodian.presenter.register;
 
+import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.custodian.register.RegisterCustodianUseCaseOutput;
 
-public class RegisterCustodianPresenter implements RegisterCustodianUseCaseOutput {
+public class RegisterCustodianPresenter implements RegisterCustodianUseCaseOutput, Presenter<CustodianViewModel> {
 
     private String ID;
     private String name;
@@ -27,6 +28,7 @@ public class RegisterCustodianPresenter implements RegisterCustodianUseCaseOutpu
         return this.name;
     }
 
+    @Override
     public CustodianViewModel viewModel() {
         return new CustodianViewModel(this.ID, this.name);
     }

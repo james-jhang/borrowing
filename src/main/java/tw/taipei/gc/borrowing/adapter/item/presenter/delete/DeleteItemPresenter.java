@@ -1,8 +1,9 @@
 package tw.taipei.gc.borrowing.adapter.item.presenter.delete;
 
+import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.item.delete.DeleteItemUseCaseOutput;
 
-public class DeleteItemPresenter implements DeleteItemUseCaseOutput {
+public class DeleteItemPresenter implements DeleteItemUseCaseOutput, Presenter<ItemViewModel> {
     private String ID;
 
     @Override
@@ -15,6 +16,7 @@ public class DeleteItemPresenter implements DeleteItemUseCaseOutput {
         return this.ID;
     }
 
+    @Override
     public ItemViewModel viewModel() {
         return new ItemViewModel(this.ID);
     }

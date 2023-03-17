@@ -2,12 +2,13 @@ package tw.taipei.gc.borrowing.adapter.item.presenter.query;
 
 import java.util.List;
 
+import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.item.query.ItemViewObject;
 import tw.taipei.gc.borrowing.usecase.item.query.listall.ListAllItemsUseCaseOutput;
 
 import java.util.ArrayList;
 
-public class ListAllItemsPresenter implements ListAllItemsUseCaseOutput {
+public class ListAllItemsPresenter implements ListAllItemsUseCaseOutput, Presenter<List<ItemViewModel>> {
 
     private List<ItemViewObject> items;
 
@@ -25,7 +26,7 @@ public class ListAllItemsPresenter implements ListAllItemsUseCaseOutput {
         return this.items;
     }
 
-    // TODO make a parent class for all presenters?
+    @Override
     public List<ItemViewModel> viewModel() {
         List<ItemViewModel> itemViewModels = new ArrayList<>();
         for (ItemViewObject item : this.items) {

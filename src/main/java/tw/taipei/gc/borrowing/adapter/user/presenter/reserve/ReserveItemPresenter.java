@@ -1,15 +1,16 @@
 package tw.taipei.gc.borrowing.adapter.user.presenter.reserve;
 
+import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.user.reserve.ReserveItemUseCaseOutput;
 
-// TODO make "Presenter" as an interface
-public class ReserveItemPresenter implements ReserveItemUseCaseOutput {
+public class ReserveItemPresenter implements ReserveItemUseCaseOutput, Presenter<ReservationViewModel> {
     private String reservationID;
     private String userID;
     private String itemID;
     private String startDate;
     private String endDate;
 
+    @Override
     public ReservationViewModel viewModel() {
         return new ReservationViewModel(
                 reservationID,

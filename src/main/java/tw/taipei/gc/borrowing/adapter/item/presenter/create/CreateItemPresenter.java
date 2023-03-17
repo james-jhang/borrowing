@@ -1,13 +1,14 @@
 package tw.taipei.gc.borrowing.adapter.item.presenter.create;
 
+import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCaseOutput;
 
-public class CreateItemPresenter implements CreateItemUseCaseOutput {
+public class CreateItemPresenter implements CreateItemUseCaseOutput, Presenter<CreateItemViewModel> {
 
     private String ID;
     private String name;
 
-    // TODO make a parent class for all presenters?
+    @Override
     public CreateItemViewModel viewModel() {
         CreateItemViewModel viewModel = new CreateItemViewModel();
         viewModel.setID(this.ID);
