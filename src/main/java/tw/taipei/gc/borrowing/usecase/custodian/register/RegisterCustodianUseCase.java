@@ -3,22 +3,22 @@ package tw.taipei.gc.borrowing.usecase.custodian.register;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
 import tw.taipei.gc.borrowing.model.user.Custodian;
 import tw.taipei.gc.borrowing.usecase.UseCase;
-import tw.taipei.gc.borrowing.usecase.user.repository.UserDTOMapper;
-import tw.taipei.gc.borrowing.usecase.user.repository.UserRepository;
+import tw.taipei.gc.borrowing.usecase.custodian.repository.CustodianDTOMapper;
+import tw.taipei.gc.borrowing.usecase.custodian.repository.CustodianRepository;
 
 public class RegisterCustodianUseCase extends UseCase<RegisterCustodianUseCaseInput, RegisterCustodianUseCaseOutput> {
 
-    private final UserRepository userRepository;
+    private final CustodianRepository custodianRepository;
 
-    public RegisterCustodianUseCase(UserRepository userRepository, DomainEventBus domainEventBus) {
+    public RegisterCustodianUseCase(CustodianRepository custodianRepository, DomainEventBus domainEventBus) {
         super(domainEventBus);
-        this.userRepository = userRepository;
+        this.custodianRepository = custodianRepository;
     }
 
     @Override
     public void execute(RegisterCustodianUseCaseInput input, RegisterCustodianUseCaseOutput output) {
         Custodian custodian = new Custodian(input.getName());
-        this.userRepository.save(UserDTOMapper.toDTO(custodian));
+        this.custodianRepository.save(CustodianDTOMapper.toDTO(custodian));
         output.setID(custodian.getID().toString());
         output.setName(custodian.getName());
     }

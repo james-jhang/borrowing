@@ -1,8 +1,11 @@
 package tw.taipei.gc.borrowing.adapter;
 
+import tw.taipei.gc.borrowing.adapter.custodian.repository.InMemoryCustodianRepository;
 import tw.taipei.gc.borrowing.adapter.item.repository.InMemoryItemRepository;
 import tw.taipei.gc.borrowing.adapter.user.repository.InMemoryUserRepository;
 import tw.taipei.gc.borrowing.model.common.DomainEventBus;
+import tw.taipei.gc.borrowing.usecase.custodian.deliver.DeliverItemUseCase;
+import tw.taipei.gc.borrowing.usecase.custodian.repository.CustodianRepository;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCase;
 import tw.taipei.gc.borrowing.usecase.item.delete.DeleteItemUseCase;
 import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCase;
@@ -18,11 +21,13 @@ public class UseCaseFactory {
     private static DomainEventBus eventBus;
     private static ItemRepository itemRepository;
     private static UserRepository userRepository;
+    private static CustodianRepository custodianRepository;
 
     private UseCaseFactory() {
         eventBus = new DomainEventBus();
         itemRepository = new InMemoryItemRepository();
         userRepository = new InMemoryUserRepository();
+        custodianRepository = new InMemoryCustodianRepository();
     }
 
     public static UseCaseFactory getInstance() {
@@ -37,7 +42,7 @@ public class UseCaseFactory {
     }
 
     public RegisterCustodianUseCase RegisterCustodianUseCase() {
-        return new RegisterCustodianUseCase(userRepository, eventBus);
+        return new RegisterCustodianUseCase(custodianRepository, eventBus);
     }
 
     public CreateItemUseCase CreateItemUseCase() {
@@ -58,5 +63,9 @@ public class UseCaseFactory {
 
     public ReserveItemUseCase ReserveItemUseCase() {
         return new ReserveItemUseCase(userRepository, itemRepository, eventBus);
+    }
+
+    public DeliverItemUseCase DeliverItemUseCase() {
+        return new DeliverItemUseCase(custodianRepository, userRepository, eventBus);
     }
 }

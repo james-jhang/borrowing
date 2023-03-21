@@ -19,8 +19,8 @@ public class User extends Entity {
         this.reservations = new LinkedList<>();
     }
 
-    public User(String ID, String name, List<Reservation> reservations) {
-        this.ID = UUID.fromString(ID);
+    public User(UUID ID, String name, List<Reservation> reservations) {
+        this.ID = ID;
         this.name = name;
         this.reservations = reservations;
     }

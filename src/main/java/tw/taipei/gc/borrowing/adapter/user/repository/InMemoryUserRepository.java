@@ -46,7 +46,7 @@ public class InMemoryUserRepository implements UserRepository {
     public Optional<UserDTO> save(UserDTO user) {
         this.users.add(user);
         // TODO the passed-in user cannot be null
-        return Optional.ofNullable(user);
+        return Optional.of(user);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package tw.taipei.gc.borrowing.model.item;
+package tw.taipei.gc.borrowing.model.user;
 
 import tw.taipei.gc.borrowing.model.common.Entity;
 
@@ -13,6 +13,15 @@ public class IOU extends Entity {
     private final Date endDate;
 
     public IOU(UUID custodianID, UUID userID, UUID itemID, Date startDate, Date endDate) {
+        this.custodianID = custodianID;
+        this.userID = userID;
+        this.itemID = itemID;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public IOU(UUID ID, UUID custodianID, UUID userID, UUID itemID, Date startDate, Date endDate) {
+        super(ID);
         this.custodianID = custodianID;
         this.userID = userID;
         this.itemID = itemID;

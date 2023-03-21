@@ -8,6 +8,7 @@ import tw.taipei.gc.borrowing.usecase.user.repository.reservation.ReservationDTO
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 public class UserDTOMapper {
     public static UserDTO toDTO(User user) {
@@ -29,7 +30,7 @@ public class UserDTOMapper {
         }
 
         return new User(
-                userDTO.getID(),
+                UUID.fromString(userDTO.getID()),
                 userDTO.getName(),
                 reservations
         );
