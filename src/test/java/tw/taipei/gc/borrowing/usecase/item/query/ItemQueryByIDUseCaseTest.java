@@ -40,8 +40,7 @@ public class ItemQueryByIDUseCaseTest {
         queryItemByIDUseCaseInput.setID(this.chair.getID().toString());
         queryItemByIDUseCase.execute(queryItemByIDUseCaseInput, queryItemByIDUseCaseOutput);
 
-        ItemViewObject item = queryItemByIDUseCaseOutput.getItem();
-        assertEquals(this.chair.getID().toString(), item.getID());
-        assertEquals(this.chair.getName(), item.getName());
+        assertEquals(this.chair.getID().toString(), queryItemByIDUseCaseOutput.getItemID());
+        assertEquals(this.chair.getName(), queryItemByIDUseCaseOutput.getItemName());
     }
 }

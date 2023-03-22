@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class DeleteItemUseCase extends UseCase<DeleteItemUseCaseInput, DeleteItemUseCaseOutput> {
 
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public DeleteItemUseCase(ItemRepository itemRepository, DomainEventBus domainEventBus){
         super(domainEventBus);
@@ -22,7 +22,7 @@ public class DeleteItemUseCase extends UseCase<DeleteItemUseCaseInput, DeleteIte
         if (res.isPresent()) {
             // TODO how to design exceptions with CA?
             this.itemRepository.remove(res.get());
-            output.setID(ID);
+            output.setItemID(ID);
         } else {
             // TODO how to design exceptions with CA?
         }

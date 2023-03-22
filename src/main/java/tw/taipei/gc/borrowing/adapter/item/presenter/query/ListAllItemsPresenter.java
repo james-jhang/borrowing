@@ -31,7 +31,8 @@ public class ListAllItemsPresenter implements ListAllItemsUseCaseOutput, Present
         List<ItemViewModel> itemViewModels = new ArrayList<>();
         for (ItemViewObject item : this.items) {
             itemViewModels.add(
-                    new ItemViewModel(item.getID(), item.getName()));
+                    new ItemViewModel(item.getID(), item.getName())
+            );
         }
         return itemViewModels;
     }

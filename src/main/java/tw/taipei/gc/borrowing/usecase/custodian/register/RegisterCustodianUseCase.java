@@ -19,7 +19,7 @@ public class RegisterCustodianUseCase extends UseCase<RegisterCustodianUseCaseIn
     public void execute(RegisterCustodianUseCaseInput input, RegisterCustodianUseCaseOutput output) {
         Custodian custodian = new Custodian(input.getName());
         this.custodianRepository.save(CustodianDTOMapper.toDTO(custodian));
-        output.setID(custodian.getID().toString());
+        output.setCustodianID(custodian.getID().toString());
         output.setName(custodian.getName());
     }
 }

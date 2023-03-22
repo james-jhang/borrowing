@@ -4,12 +4,12 @@ import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.user.register.RegisterUserUseCaseOutput;
 
 public class RegisterUserPresenter implements RegisterUserUseCaseOutput, Presenter<UserViewModel> {
-    private String ID;
+    private String userID;
     private String name;
 
     @Override
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     @Override
@@ -18,8 +18,8 @@ public class RegisterUserPresenter implements RegisterUserUseCaseOutput, Present
     }
 
     @Override
-    public String getID() {
-        return this.ID;
+    public String getUserID() {
+        return this.userID;
     }
 
     @Override
@@ -29,6 +29,6 @@ public class RegisterUserPresenter implements RegisterUserUseCaseOutput, Present
 
     @Override
     public UserViewModel viewModel() {
-        return new UserViewModel(ID, name);
+        return new UserViewModel(userID, name);
     }
 }

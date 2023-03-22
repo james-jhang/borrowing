@@ -8,7 +8,7 @@ import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 
 public class CreateItemUseCase extends UseCase<CreateItemUseCaseInput, CreateItemUseCaseOutput> {
 
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public CreateItemUseCase(ItemRepository itemRepository, DomainEventBus domainEventBus) {
         super(domainEventBus);
@@ -19,7 +19,7 @@ public class CreateItemUseCase extends UseCase<CreateItemUseCaseInput, CreateIte
     public void execute(CreateItemUseCaseInput input, CreateItemUseCaseOutput output) {
         Item item = new Item(input.getName());
         this.itemRepository.save(ItemDTOMapper.toDTO(item));
-        output.setID(item.getID().toString());
+        output.setItemID(item.getID().toString());
         output.setName(item.getName());
     }
 

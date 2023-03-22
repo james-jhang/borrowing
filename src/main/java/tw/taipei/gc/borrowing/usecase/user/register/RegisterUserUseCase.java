@@ -19,7 +19,7 @@ public class RegisterUserUseCase extends UseCase<RegisterUserUseCaseInput, Regis
     public void execute(RegisterUserUseCaseInput input, RegisterUserUseCaseOutput output) {
         User user = new User(input.getName());
         this.userRepository.save(UserDTOMapper.toDTO(user));
-        output.setID(user.getID().toString());
+        output.setUserID(user.getID().toString());
         output.setName(user.getName());
     }
 }

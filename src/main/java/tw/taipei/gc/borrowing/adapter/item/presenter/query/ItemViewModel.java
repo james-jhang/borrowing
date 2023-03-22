@@ -1,16 +1,16 @@
 package tw.taipei.gc.borrowing.adapter.item.presenter.query;
 
 public class ItemViewModel {
-    private String ID;
-    private String name;
+    private final String itemID;
+    private final String name;
 
-    public ItemViewModel(String ID, String name) {
-        this.ID = ID;
+    public ItemViewModel(String itemID, String name) {
+        this.itemID = itemID;
         this.name = name;
     }
 
-    public String getID() {
-        return this.ID;
+    public String getItemID() {
+        return this.itemID;
     }
 
     public String getName() {

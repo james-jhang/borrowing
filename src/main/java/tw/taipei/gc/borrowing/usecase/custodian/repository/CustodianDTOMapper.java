@@ -25,7 +25,7 @@ public class CustodianDTOMapper {
             reservationDTOList.add(ReservationDTOMapper.toDTO(reservation));
         }
         custodianDTO.setID(custodian.getID().toString())
-                .setName(custodianDTO.getName())
+                .setName(custodian.getName())
                 .setIOUDTOs(IOUList)
                 .setReservationDTOs(reservationDTOList);
         return custodianDTO;

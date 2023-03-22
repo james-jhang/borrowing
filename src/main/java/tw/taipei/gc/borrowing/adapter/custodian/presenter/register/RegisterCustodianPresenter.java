@@ -5,12 +5,12 @@ import tw.taipei.gc.borrowing.usecase.custodian.register.RegisterCustodianUseCas
 
 public class RegisterCustodianPresenter implements RegisterCustodianUseCaseOutput, Presenter<CustodianViewModel> {
 
-    private String ID;
+    private String custodianID;
     private String name;
 
     @Override
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setCustodianID(String custodianID) {
+        this.custodianID = custodianID;
     }
 
     @Override
@@ -19,8 +19,8 @@ public class RegisterCustodianPresenter implements RegisterCustodianUseCaseOutpu
     }
 
     @Override
-    public String getID() {
-        return this.ID;
+    public String getCustodianID() {
+        return this.custodianID;
     }
 
     @Override
@@ -30,6 +30,6 @@ public class RegisterCustodianPresenter implements RegisterCustodianUseCaseOutpu
 
     @Override
     public CustodianViewModel viewModel() {
-        return new CustodianViewModel(this.ID, this.name);
+        return new CustodianViewModel(this.custodianID, this.name);
     }
 }

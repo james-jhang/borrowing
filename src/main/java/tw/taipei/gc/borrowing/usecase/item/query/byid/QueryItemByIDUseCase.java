@@ -12,7 +12,7 @@ import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 
 public class QueryItemByIDUseCase extends UseCase<QueryItemByIDUseCaseInput, QueryItemByIDUseCaseOutput> {
 
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public QueryItemByIDUseCase(ItemRepository itemRepository, DomainEventBus domainEventBus) {
         super(domainEventBus);
@@ -24,7 +24,7 @@ public class QueryItemByIDUseCase extends UseCase<QueryItemByIDUseCaseInput, Que
         Optional<ItemDTO> result = this.itemRepository.findById(input.getID());
         if (result.isPresent()) {
             Item item = ItemDTOMapper.toModel(result.get());
-            output.setID(item.getID().toString());
+            output.setItemID(item.getID().toString());
             output.setName(item.getName());
         }
     }

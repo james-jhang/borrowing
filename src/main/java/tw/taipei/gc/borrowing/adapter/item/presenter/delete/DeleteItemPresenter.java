@@ -4,21 +4,21 @@ import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.item.delete.DeleteItemUseCaseOutput;
 
 public class DeleteItemPresenter implements DeleteItemUseCaseOutput, Presenter<ItemViewModel> {
-    private String ID;
+    private String itemID;
 
     @Override
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setItemID(String itemID) {
+        this.itemID = itemID;
     }
 
     @Override
-    public String getID() {
-        return this.ID;
+    public String getItemID() {
+        return this.itemID;
     }
 
     @Override
     public ItemViewModel viewModel() {
-        return new ItemViewModel(this.ID);
+        return new ItemViewModel(this.itemID);
     }
 
 }

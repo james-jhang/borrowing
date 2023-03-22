@@ -1,16 +1,15 @@
 package tw.taipei.gc.borrowing.adapter.item.presenter.query;
 
 import tw.taipei.gc.borrowing.adapter.Presenter;
-import tw.taipei.gc.borrowing.usecase.item.query.ItemViewObject;
 import tw.taipei.gc.borrowing.usecase.item.query.byid.QueryItemByIDUseCaseOutput;
 
 public class QueryItemByIDPresenter implements QueryItemByIDUseCaseOutput, Presenter<ItemViewModel> {
-    private String ID;
+    private String itemID;
     private String name;
 
     @Override
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setItemID(String itemID) {
+        this.itemID = itemID;
     }
 
     @Override
@@ -19,15 +18,16 @@ public class QueryItemByIDPresenter implements QueryItemByIDUseCaseOutput, Prese
     }
 
     @Override
-    public ItemViewObject getItem() {
-        return new ItemViewObject(this.ID, this.name);
+    public String getItemID() {
+        return this.itemID;
+    }
+
+    @Override
+    public String getItemName() {
+        return this.name;
     }
 
     public ItemViewModel viewModel() {
-        if (this.ID != null) {
-            return new ItemViewModel(this.ID, this.name);
-        } else {
-            return null;
-        }
+        return new ItemViewModel(this.itemID, this.name);
     }
 }

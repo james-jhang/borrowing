@@ -31,7 +31,7 @@ public class RegisterCustodianUseCaseTest {
         registerCustodianUseCase.execute(registerCustodianUseCaseInput, registerCustodianUseCaseOutput);
         assertEquals("James Jhang", registerCustodianUseCaseOutput.getName());
 
-        String custodianID = registerCustodianUseCaseOutput.getID();
+        String custodianID = registerCustodianUseCaseOutput.getCustodianID();
         CustodianDTO custodianDTO = custodianRepository.findById(custodianID).get();
         assertEquals("James Jhang", custodianDTO.getName());
     }

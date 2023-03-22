@@ -4,26 +4,25 @@ import tw.taipei.gc.borrowing.adapter.Presenter;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCaseOutput;
 
 public class CreateItemPresenter implements CreateItemUseCaseOutput, Presenter<CreateItemViewModel> {
-
-    private String ID;
+    private String itemID;
     private String name;
 
     @Override
     public CreateItemViewModel viewModel() {
-        CreateItemViewModel viewModel = new CreateItemViewModel();
-        viewModel.setID(this.ID);
-        viewModel.setName(this.name);
-        return viewModel;
+        return new CreateItemViewModel(
+                this.itemID,
+                this.name
+        );
     }
 
     @Override
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setItemID(String itemID) {
+        this.itemID = itemID;
     }
 
     @Override
-    public String getID() {
-        return this.ID;
+    public String getItemID() {
+        return this.itemID;
     }
 
     @Override

@@ -4,9 +4,9 @@ import tw.taipei.gc.borrowing.usecase.UseCaseOutput;
 
 public interface CreateItemUseCaseOutput extends UseCaseOutput {
 
-    void setID(String ID);
+    void setItemID(String itemID);
 
-    String getID();
+    String getItemID();
 
     void setName(String name);
 

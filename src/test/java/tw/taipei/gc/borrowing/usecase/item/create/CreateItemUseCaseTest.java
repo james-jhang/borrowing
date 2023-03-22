@@ -40,7 +40,7 @@ public class CreateItemUseCaseTest {
         ItemDTO bottle = items.get(0);
         assertEquals("酒精噴瓶", bottle.getName());
 
-        String ID = createItemUseCaseOutput.getID();
+        String ID = createItemUseCaseOutput.getItemID();
         assertNotNull(ID);
         assertNotEquals("", ID);
         String name = createItemUseCaseOutput.getName();

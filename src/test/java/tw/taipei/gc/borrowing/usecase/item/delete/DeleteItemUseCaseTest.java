@@ -34,7 +34,7 @@ public class DeleteItemUseCaseTest {
         deleteItemUseCaseInput.setID(this.pen.getID().toString());
         deleteItemUseCase.execute(deleteItemUseCaseInput, deleteItemUseCaseOutput);
 
-        assertEquals(this.pen.getID().toString(), deleteItemUseCaseOutput.getID());
+        assertEquals(this.pen.getID().toString(), deleteItemUseCaseOutput.getItemID());
         assertEquals(0, itemRepository.findAll().size());
     }
 }
