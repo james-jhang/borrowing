@@ -28,7 +28,6 @@ public class UserDTOMapper {
         for (ReservationDTO reservationDTO : userDTO.getReservationDTOs()) {
             reservations.add(ReservationDTOMapper.toModel(reservationDTO));
         }
-
         return new User(
                 UUID.fromString(userDTO.getID()),
                 userDTO.getName(),

@@ -21,7 +21,7 @@ public class QueryItemByIDUseCase extends UseCase<QueryItemByIDUseCaseInput, Que
 
     @Override
     public void execute(QueryItemByIDUseCaseInput input, QueryItemByIDUseCaseOutput output) {
-        Optional<ItemDTO> result = this.itemRepository.findById(input.getID());
+        Optional<ItemDTO> result = this.itemRepository.findByID(input.getID());
         if (result.isPresent()) {
             Item item = ItemDTOMapper.toModel(result.get());
             output.setItemID(item.getID().toString());

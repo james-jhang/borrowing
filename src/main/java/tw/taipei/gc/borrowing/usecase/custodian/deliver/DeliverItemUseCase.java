@@ -9,11 +9,13 @@ import tw.taipei.gc.borrowing.usecase.UseCase;
 import tw.taipei.gc.borrowing.usecase.custodian.repository.CustodianDTO;
 import tw.taipei.gc.borrowing.usecase.custodian.repository.CustodianDTOMapper;
 import tw.taipei.gc.borrowing.usecase.custodian.repository.CustodianRepository;
+import tw.taipei.gc.borrowing.usecase.custodian.repository.IOU.IOUDTOMapper;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserDTO;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserDTOMapper;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserRepository;
 import tw.taipei.gc.borrowing.usecase.utils.DateHelper;
 
+import java.util.Date;
 import java.util.Optional;
 
 public class DeliverItemUseCase extends UseCase<DeliverItemUseCaseInput, DeliverItemUseCaseOutput> {
@@ -30,21 +32,25 @@ public class DeliverItemUseCase extends UseCase<DeliverItemUseCaseInput, Deliver
 
     @Override
     public void execute(DeliverItemUseCaseInput input, DeliverItemUseCaseOutput output) {
-        Optional<CustodianDTO> cusRes = this.custodianRepository.findById(input.getCustodianID());
-        Optional<UserDTO> userRes = this.userRepository.findById(input.getUserID());
+        Optional<CustodianDTO> cusRes = this.custodianRepository.findByID(input.getCustodianID());
+        Optional<UserDTO> userRes = this.userRepository.findByID(input.getUserID());
         String reservationID = input.getReservationID();
         if (cusRes.isPresent()) {
             if (userRes.isPresent()) {
                 Custodian custodian = CustodianDTOMapper.toModel(cusRes.get());
                 User user = UserDTOMapper.toModel(userRes.get());
-                Optional<Reservation> reserRes = Optional.ofNullable(user.getReservations().stream()
+                Optional<Reservation> reserRes = user.getReservations().stream()
                         .filter(reservation -> reservation.getID().toString().equals(reservationID))
-                        .findFirst()
-                        .orElse(null));
+                        .findFirst();
+                // TODO remove null
                 if (reserRes.isPresent()) {
                     Reservation reservation = reserRes.get();
-                    IOU IOU = custodian.deliverItem(reservation);
+                    IOU IOU = custodian.deliverItem(
+                            reservation, new Date()
+                    );
+                    this.custodianRepository.createIOU(IOUDTOMapper.toDTO(IOU));
                     output.setIOUID(IOU.getID().toString());
+                    output.setDeliveringDate(DateHelper.toString(IOU.getDeliveringDate()));
                     output.setCustodianID(custodian.getID().toString());
                     output.setUserID(user.getID().toString());
                     output.setItemID(reservation.getItemID().toString());

@@ -16,6 +16,7 @@ import tw.taipei.gc.borrowing.usecase.item.repository.ItemDTOMapper;
 import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserDTOMapper;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserRepository;
+import tw.taipei.gc.borrowing.usecase.user.repository.reservation.ReservationDTOMapper;
 import tw.taipei.gc.borrowing.usecase.utils.DateHelper;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,14 +40,15 @@ public class DeliverItemUseCaseTest {
         custodian = new Custodian("James");
         user = new User("Olivia");
         item = new Item("Pen");
-        user.reserve(
+        Reservation reservation = user.reserve(
                 item,
                 DateHelper.toDate("2023/03/02"),
                 DateHelper.toDate("2023/03/05")
         );
-        userRepository.save(UserDTOMapper.toDTO(user));
-        custodianRepository.save(CustodianDTOMapper.toDTO(custodian));
-        itemRepository.save(ItemDTOMapper.toDTO(item));
+        userRepository.create(UserDTOMapper.toDTO(user));
+        userRepository.createReservation(ReservationDTOMapper.toDTO(reservation));
+        custodianRepository.create(CustodianDTOMapper.toDTO(custodian));
+        itemRepository.create(ItemDTOMapper.toDTO(item));
     }
 
 

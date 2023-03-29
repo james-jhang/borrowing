@@ -31,8 +31,8 @@ public class ReserveItemUseCaseTest {
         eventBus = new DomainEventBus();
         user = new User("Olivia");
         item = new Item("Pen");
-        userRepository.save(UserDTOMapper.toDTO(user));
-        itemRepository.save(ItemDTOMapper.toDTO(item));
+        userRepository.create(UserDTOMapper.toDTO(user));
+        itemRepository.create(ItemDTOMapper.toDTO(item));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class ReserveItemUseCaseTest {
         assertEquals("2023/03/15", reserveItemUseCaseOutput.getEndDate());
 
         // TODO where should the repository tests be placed?
-        User olivia = UserDTOMapper.toModel(userRepository.findById(this.user.getID().toString()).get());
+        User olivia = UserDTOMapper.toModel(userRepository.findByID(this.user.getID().toString()).get());
         assertEquals(reservationID, olivia.getReservations().get(0).getID().toString());
     }
 }

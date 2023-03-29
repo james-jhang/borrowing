@@ -6,6 +6,8 @@ public interface DeliverItemUseCaseOutput extends UseCaseOutput {
     void setIOUID(String toString);
 
     String getIOUID();
+    void setDeliveringDate(String deliveringDate);
+    String getDeliveringDate();
     void setCustodianID(String custodianID);
     String getCustodianID();
     void setUserID(String userID);

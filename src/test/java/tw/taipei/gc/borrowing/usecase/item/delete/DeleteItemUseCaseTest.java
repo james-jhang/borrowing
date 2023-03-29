@@ -22,7 +22,7 @@ public class DeleteItemUseCaseTest {
         itemRepository = new InMemoryItemRepository();
         eventBus = new DomainEventBus();
         this.pen = new Item("原子筆");
-        itemRepository.save(ItemDTOMapper.toDTO(this.pen));
+        itemRepository.create(ItemDTOMapper.toDTO(this.pen));
     }
 
     @Test

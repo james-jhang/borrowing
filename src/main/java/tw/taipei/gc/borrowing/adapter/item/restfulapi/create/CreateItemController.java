@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.http.ResponseEntity;
 
-import tw.taipei.gc.borrowing.adapter.UseCaseFactory;
+import tw.taipei.gc.borrowing.UseCaseFactory;
 import tw.taipei.gc.borrowing.adapter.item.presenter.create.CreateItemPresenter;
 import tw.taipei.gc.borrowing.adapter.item.presenter.create.CreateItemViewModel;
-import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCase;
 import tw.taipei.gc.borrowing.usecase.item.create.CreateItemUseCaseInput;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,19 +18,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("/api/items")
 public class CreateItemController {
 
-    private final CreateItemUseCase createItemUseCase;
-
-    public CreateItemController() {
-        this.createItemUseCase = UseCaseFactory.getInstance().CreateItemUseCase();
-    }
-
     @PostMapping("/create")
     public ResponseEntity<CreateItemViewModel> createItem(@RequestBody ItemRequest newItem) {
         CreateItemUseCaseInput createItemUseCaseInput = new CreateItemUseCaseInput();
         CreateItemPresenter createItemPresenter = new CreateItemPresenter();
         try {
             createItemUseCaseInput.setName(newItem.getName());
-            createItemUseCase.execute(createItemUseCaseInput, createItemPresenter);
+            UseCaseFactory.CreateItemUseCase().execute(createItemUseCaseInput, createItemPresenter);
             CreateItemViewModel viewModel = createItemPresenter.viewModel();
             return ResponseEntity.ok().body(viewModel);
         } catch (IllegalArgumentException e) {

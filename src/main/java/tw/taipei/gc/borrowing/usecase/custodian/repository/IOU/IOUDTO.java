@@ -4,11 +4,14 @@ import tw.taipei.gc.borrowing.usecase.DTO;
 
 public class IOUDTO implements DTO {
     private String ID;
+    private String deliveringDate;
     private String custodianID;
     private String userID;
     private String itemID;
     private String startDate;
     private String endDate;
+    private boolean isItemReturned;
+    private String returningDate;
 
     public String getID() {
         return ID;
@@ -62,5 +65,32 @@ public class IOUDTO implements DTO {
     public IOUDTO setEndDate(String endDate) {
         this.endDate = endDate;
         return this;
+    }
+
+    public boolean isItemReturned() {
+        return this.isItemReturned;
+    }
+
+    public IOUDTO setItemReturned(boolean itemReturned) {
+        this.isItemReturned = itemReturned;
+        return this;
+    }
+
+    public String getDeliveringDate() {
+        return this.deliveringDate;
+    }
+
+    public IOUDTO setDeliveringDate(String deliveringDate) {
+        this.deliveringDate = deliveringDate;
+        return this;
+    }
+
+    public IOUDTO setReturningDate(String returningDate) {
+        this.returningDate = returningDate;
+        return this;
+    }
+
+    public String getReturningDate() {
+        return this.returningDate;
     }
 }

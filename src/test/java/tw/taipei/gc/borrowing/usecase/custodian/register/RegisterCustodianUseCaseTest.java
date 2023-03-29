@@ -32,7 +32,7 @@ public class RegisterCustodianUseCaseTest {
         assertEquals("James Jhang", registerCustodianUseCaseOutput.getName());
 
         String custodianID = registerCustodianUseCaseOutput.getCustodianID();
-        CustodianDTO custodianDTO = custodianRepository.findById(custodianID).get();
+        CustodianDTO custodianDTO = custodianRepository.findByID(custodianID).get();
         assertEquals("James Jhang", custodianDTO.getName());
     }
 }

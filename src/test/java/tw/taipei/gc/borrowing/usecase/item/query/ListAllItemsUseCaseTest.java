@@ -25,8 +25,8 @@ public class ListAllItemsUseCaseTest {
     public void given() {
         itemRepository = new InMemoryItemRepository();
         eventBus = new DomainEventBus();
-        itemRepository.save(ItemDTOMapper.toDTO(new Item("木桌")));
-        itemRepository.save(ItemDTOMapper.toDTO(new Item("辦公椅")));
+        itemRepository.create(ItemDTOMapper.toDTO(new Item("木桌")));
+        itemRepository.create(ItemDTOMapper.toDTO(new Item("辦公椅")));
     }
 
     @Test

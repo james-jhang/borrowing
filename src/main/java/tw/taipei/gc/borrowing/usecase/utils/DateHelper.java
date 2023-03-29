@@ -16,6 +16,9 @@ public class DateHelper {
     }
 
     public static String toString(Date date) {
+        if (date == null) {
+            return "";
+        }
         return dateFormat.format(date);
     }
 }

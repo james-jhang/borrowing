@@ -18,7 +18,7 @@ public class CreateItemUseCase extends UseCase<CreateItemUseCaseInput, CreateIte
     @Override
     public void execute(CreateItemUseCaseInput input, CreateItemUseCaseOutput output) {
         Item item = new Item(input.getName());
-        this.itemRepository.save(ItemDTOMapper.toDTO(item));
+        this.itemRepository.create(ItemDTOMapper.toDTO(item));
         output.setItemID(item.getID().toString());
         output.setName(item.getName());
     }

@@ -1,59 +1,44 @@
 package tw.taipei.gc.borrowing.adapter.item.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import tw.taipei.gc.borrowing.usecase.item.repository.ItemDTO;
 import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 
 public class InMemoryItemRepository implements ItemRepository {
 
-    private final List<ItemDTO> entities;
+    private final Map<String, ItemDTO> items;
 
     public InMemoryItemRepository() {
-        entities = new ArrayList<ItemDTO>();
+        items = new HashMap<>();
     }
 
     @Override
     public List<ItemDTO> findAll() {
-        return entities;
+        List<ItemDTO> itemDTOs = new ArrayList<>();
+        this.items.forEach((itemID, itemDTO) ->
+            itemDTOs.add(itemDTO)
+        );
+        return itemDTOs;
     }
 
     @Override
-    public Optional<ItemDTO> findById(String id) {
-        ItemDTO target = null;
-        for (ItemDTO item : entities) {
-            if (item.getID().equals(id)) {
-                target = item;
-                break;
-            }
-        }
-        return Optional.ofNullable(target);
+    public Optional<ItemDTO> findByID(String itemID) {
+        return Optional.ofNullable(this.items.get(itemID));
     }
 
     @Override
-    public Optional<ItemDTO> findFirstByName(String name) {
-        ItemDTO target = null;
-        for (ItemDTO item : entities) {
-            if (item.getName() == name) {
-                target = item;
-                break;
-            }
-        }
-        return Optional.ofNullable(target);
+    public void create(ItemDTO itemDTO) {
+        this.items.put(itemDTO.getID(), itemDTO);
     }
 
     @Override
-    public Optional<ItemDTO> save(ItemDTO item) {
-        entities.add(item);
-        // TODO the passed-in item cannot be null
-        return Optional.ofNullable(item);
+    public void remove(String itemID) {
+        this.items.remove(itemID);
     }
 
     @Override
-    public boolean remove(ItemDTO item) {
-        return entities.remove(item);
+    public void update(ItemDTO itemDTO) {
+        this.items.put(itemDTO.getID(), itemDTO);
     }
-
 }

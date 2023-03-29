@@ -11,22 +11,30 @@ public class IOU extends Entity {
     private final UUID itemID;
     private final Date startDate;
     private final Date endDate;
+    private final Date deliveringDate;
+    private boolean isItemReturned;
+    private Date returningDate;
 
-    public IOU(UUID custodianID, UUID userID, UUID itemID, Date startDate, Date endDate) {
+    public IOU(Date deliveringDate, UUID custodianID, UUID userID, UUID itemID, Date startDate, Date endDate) {
+        this.deliveringDate = deliveringDate;
         this.custodianID = custodianID;
         this.userID = userID;
         this.itemID = itemID;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.isItemReturned = false;
     }
 
-    public IOU(UUID ID, UUID custodianID, UUID userID, UUID itemID, Date startDate, Date endDate) {
+    public IOU(UUID ID, Date deliveringDate, UUID custodianID, UUID userID, UUID itemID, Date startDate, Date endDate, boolean isItemReturned, Date returningDate) {
         super(ID);
+        this.deliveringDate = deliveringDate;
         this.custodianID = custodianID;
         this.userID = userID;
         this.itemID = itemID;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.isItemReturned = isItemReturned;
+        this.returningDate = returningDate;
     }
 
     public UUID getCustodianID() {
@@ -47,5 +55,22 @@ public class IOU extends Entity {
 
     public Date getEndDate() {
         return endDate;
+    }
+
+    public boolean isItemReturned() {
+        return this.isItemReturned;
+    }
+
+    public void itemReturned(Date returningDate) {
+        this.isItemReturned= true;
+        this.returningDate = returningDate;
+    }
+
+    public Date getDeliveringDate() {
+        return this.deliveringDate;
+    }
+
+    public Date getReturningDate() {
+        return this.returningDate;
     }
 }

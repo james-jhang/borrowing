@@ -1,28 +1,17 @@
 package tw.taipei.gc.borrowing.usecase.custodian.repository;
 
-import tw.taipei.gc.borrowing.usecase.DTO;
 import tw.taipei.gc.borrowing.usecase.custodian.repository.IOU.IOUDTO;
+import tw.taipei.gc.borrowing.usecase.user.repository.UserDTO;
 import tw.taipei.gc.borrowing.usecase.user.repository.reservation.ReservationDTO;
 
 import java.util.List;
 
-public class CustodianDTO implements DTO {
-    private String ID;
-    private String name;
+public class CustodianDTO extends UserDTO {
     private List<IOUDTO> IOUDTOs;
-    private List<ReservationDTO> reservationDTOS;
-
-    public String getID() {
-        return this.ID;
-    }
 
     public CustodianDTO setID(String ID) {
         this.ID = ID;
         return this;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public CustodianDTO setName(String name) {
@@ -35,16 +24,13 @@ public class CustodianDTO implements DTO {
         return this;
     }
 
-    public CustodianDTO setReservationDTOs(List<ReservationDTO> reservationDTOS) {
-        this.reservationDTOS = reservationDTOS;
+    public CustodianDTO setReservationDTOs(List<ReservationDTO> reservationDTOs) {
+        this.reservationDTOs = reservationDTOs;
         return this;
     }
 
     public List<IOUDTO> getIOUDTOs() {
-        return IOUDTOs;
+        return this.IOUDTOs;
     }
 
-    public List<ReservationDTO> getReservationDTOS() {
-        return reservationDTOS;
-    }
 }

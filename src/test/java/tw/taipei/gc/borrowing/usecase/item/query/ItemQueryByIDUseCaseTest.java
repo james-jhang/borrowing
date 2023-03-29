@@ -27,8 +27,8 @@ public class ItemQueryByIDUseCaseTest {
         eventBus = new DomainEventBus();
         this.table = new Item("木桌");
         this.chair = new Item("辦公椅");
-        itemRepository.save(ItemDTOMapper.toDTO(this.table));
-        itemRepository.save(ItemDTOMapper.toDTO(this.chair));
+        itemRepository.create(ItemDTOMapper.toDTO(this.table));
+        itemRepository.create(ItemDTOMapper.toDTO(this.chair));
     }
 
     @Test

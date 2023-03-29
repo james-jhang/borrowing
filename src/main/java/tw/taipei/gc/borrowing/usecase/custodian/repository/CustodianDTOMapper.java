@@ -37,7 +37,7 @@ public class CustodianDTOMapper {
             IOUs.add(IOUDTOMapper.toModel(IOUDTO));
         }
         List<Reservation> reservations = new LinkedList<>();
-        for (ReservationDTO reservationDTO : custodianDTO.getReservationDTOS()) {
+        for (ReservationDTO reservationDTO : custodianDTO.getReservationDTOs()) {
             reservations.add(ReservationDTOMapper.toModel(reservationDTO));
         }
         return new Custodian(

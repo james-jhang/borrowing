@@ -7,9 +7,9 @@ import java.util.List;
 
 // TODO turn into "record"
 public class UserDTO implements DTO {
-    private String ID;
-    private String name;
-    private List<ReservationDTO> reservationDTOs;
+    protected String ID;
+    protected String name;
+    protected List<ReservationDTO> reservationDTOs;
 
     public String getID() {
         return this.ID;

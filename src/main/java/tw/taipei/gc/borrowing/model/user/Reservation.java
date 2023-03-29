@@ -10,6 +10,8 @@ public class Reservation extends Entity {
     private final UUID itemID;
     private Date startDate;
     private Date endDate;
+    private boolean delivered;
+    private UUID deliveringCustodianID;
 
     public Reservation(UUID userID, UUID itemID, Date startDate, Date endDate) {
         super();
@@ -41,5 +43,18 @@ public class Reservation extends Entity {
 
     public Date getEndDate() {
         return this.endDate;
+    }
+
+    public void delivered(UUID custodianID) {
+        this.delivered = true;
+        this.deliveringCustodianID = custodianID;
+    }
+
+    public boolean isDelivered() {
+        return delivered;
+    }
+
+    public UUID getDeliveringCustodianID() {
+        return deliveringCustodianID;
     }
 }

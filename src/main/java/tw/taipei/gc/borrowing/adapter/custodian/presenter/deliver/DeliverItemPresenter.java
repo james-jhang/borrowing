@@ -5,6 +5,7 @@ import tw.taipei.gc.borrowing.usecase.custodian.deliver.DeliverItemUseCaseOutput
 
 public class DeliverItemPresenter implements DeliverItemUseCaseOutput, Presenter<IOUViewModel> {
     private String IOUID;
+    private String deliveringDate;
     private String custodianID;
     private String userID;
     private String itemID;
@@ -15,12 +16,16 @@ public class DeliverItemPresenter implements DeliverItemUseCaseOutput, Presenter
     public IOUViewModel viewModel() {
         return new IOUViewModel(
                 this.IOUID,
+                this.deliveringDate,
                 this.custodianID,
                 this.userID,
                 this.itemID,
                 this.startDate,
-                this.endDate
+                this.endDate,
+                false,
+                ""
         );
+        // TODO what the returningDate should be? the item has not been returned yet.
     }
 
     @Override
@@ -81,5 +86,15 @@ public class DeliverItemPresenter implements DeliverItemUseCaseOutput, Presenter
     @Override
     public String getEndDate() {
         return this.endDate;
+    }
+
+    @Override
+    public void setDeliveringDate(String deliveringDate) {
+        this.deliveringDate = deliveringDate;
+    }
+
+    @Override
+    public String getDeliveringDate() {
+        return this.deliveringDate;
     }
 }

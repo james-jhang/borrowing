@@ -11,6 +11,7 @@ import tw.taipei.gc.borrowing.usecase.item.repository.ItemRepository;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserDTO;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserDTOMapper;
 import tw.taipei.gc.borrowing.usecase.user.repository.UserRepository;
+import tw.taipei.gc.borrowing.usecase.user.repository.reservation.ReservationDTOMapper;
 import tw.taipei.gc.borrowing.usecase.utils.DateHelper;
 
 import java.util.Optional;
@@ -28,8 +29,8 @@ public class ReserveItemUseCase extends UseCase<ReserveItemUseCaseInput, Reserve
 
     @Override
     public void execute(ReserveItemUseCaseInput input, ReserveItemUseCaseOutput output) {
-        Optional<UserDTO> userRes = userRepository.findById(input.getUserID());
-        Optional<ItemDTO> itemRes = itemRepository.findById(input.getItemID());
+        Optional<UserDTO> userRes = userRepository.findByID(input.getUserID());
+        Optional<ItemDTO> itemRes = itemRepository.findByID(input.getItemID());
         if (userRes.isPresent()) {
             if (itemRes.isPresent()) {
                 User user = UserDTOMapper.toModel(userRes.get());
@@ -40,10 +41,10 @@ public class ReserveItemUseCase extends UseCase<ReserveItemUseCaseInput, Reserve
                         DateHelper.toDate(input.getEndDate())
                 );
 
-                userRepository.save(UserDTOMapper.toDTO(user));
+                userRepository.createReservation(ReservationDTOMapper.toDTO(reservation));
                 output.setReservationID(reservation.getID().toString());
-                output.setUserID(user.getID().toString());
-                output.setItemID(item.getID().toString());
+                output.setUserID(reservation.getUserID().toString());
+                output.setItemID(reservation.getItemID().toString());
                 output.setStartDate(DateHelper.toString(reservation.getStartDate()));
                 output.setEndDate(DateHelper.toString(reservation.getEndDate()));
             } else {

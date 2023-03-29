@@ -5,22 +5,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tw.taipei.gc.borrowing.adapter.UseCaseFactory;
+import tw.taipei.gc.borrowing.UseCaseFactory;
 import tw.taipei.gc.borrowing.adapter.user.presenter.reserve.ReservationViewModel;
 import tw.taipei.gc.borrowing.adapter.user.presenter.reserve.ReserveItemPresenter;
-import tw.taipei.gc.borrowing.usecase.user.reserve.ReserveItemUseCase;
 import tw.taipei.gc.borrowing.usecase.user.reserve.ReserveItemUseCaseInput;
 
 
 @RestController
 @RequestMapping("/api/users")
 public class ReserveItemController {
-
-    private final ReserveItemUseCase reserveItemUseCase;
-
-    public ReserveItemController() {
-        this.reserveItemUseCase = UseCaseFactory.getInstance().ReserveItemUseCase();
-    }
 
     @PostMapping("/reserve")
     public ResponseEntity<ReservationViewModel> reserve_item(@RequestBody ReservationRequest request) {
@@ -31,7 +24,7 @@ public class ReserveItemController {
             reserveItemUseCaseInput.setItemID(request.getItemID());
             reserveItemUseCaseInput.setStartDate(request.getStartDate());
             reserveItemUseCaseInput.setEndDate(request.getEndDate());
-            this.reserveItemUseCase.execute(reserveItemUseCaseInput, reserveItemPresenter);
+            UseCaseFactory.ReserveItemUseCase().execute(reserveItemUseCaseInput, reserveItemPresenter);
             return ResponseEntity.ok().body(reserveItemPresenter.viewModel());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(null);
